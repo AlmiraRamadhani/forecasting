@@ -8,7 +8,7 @@
                 <button class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
             </div>
             <div class="form-group">
-                <a class="btn btn-primary" href="<?=site_url('user/tambah')?>"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
+                <a class="btn btn-primary" href="<?=site_url('transaksi/tambah')?>"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
             </div>
         </form>
     </div>
@@ -17,8 +17,9 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>User</th>
-                <th>Level</th>
+                <th>Nama</th>
+                <th>Tanggal</th>
+                <th>Barang</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -27,11 +28,12 @@
         foreach($rows as $row):?>
         <tr>
             <td><?=++$no ?></td>
-            <td><?=$row->user?></td>
-            <td><?=$row->level?></td>
+            <td><?=$row->nama ?></td>
+            <td><?=$row->tgl ?></td>
+            <td><?=$row->barang ?></td>
             <td>
-                <a class="btn btn-xs btn-warning" href="<?=site_url("user/ubah/$row->id_user")?>"><span class="glyphicon glyphicon-edit"></span></a>
-                <a class="btn btn-xs btn-danger" href="<?=site_url("user/hapus/$row->id_user")?>" onclick="return confirm('Hapus data?')"><span class="glyphicon glyphicon-trash"></span></a>
+                <a class="btn btn-xs btn-warning" href="<?=site_url("transaksi/ubah/$row->id")?>"><span class="glyphicon glyphicon-edit"></span></a>
+                <a class="btn btn-xs btn-danger" href="<?=site_url("transaksi/hapus/$row->id")?>" onclick="return confirm('Hapus data?')"><span class="glyphicon glyphicon-trash"></span></a>
             </td>
         </tr>
         <?php endforeach;?>

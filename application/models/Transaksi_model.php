@@ -1,12 +1,12 @@
 <?php
-class User_model extends CI_Model
+class Transaksi_model extends CI_Model
 {
     protected $table = 'tb_transaksi';
     protected $kode = 'id';
 
     public function tampil($search = '')
     {
-        return $this->db->query("SELECT * FROM tb_transaksi WHERE user LIKE '%" . $search . "%' ORDER BY id")->result();
+        return $this->db->query("SELECT * FROM tb_transaksi WHERE id LIKE '%" . $search . "%' ORDER BY id")->result();
     }
 
     public function get_user($ID = null)

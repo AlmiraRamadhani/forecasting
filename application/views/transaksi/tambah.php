@@ -3,15 +3,15 @@
         <?=print_error()?>
         <form method="post">
             <div class="form-group">
-                <label>Username <span class="text-danger">*</span></label>
-                <input class="form-control" type="text" name="user" value="<?=set_value('user')?>"/>
+                <label>Nama <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" name="nama" value="<?=set_value('nama')?>"/>
             </div>
             <div class="form-group">
-                <label>Password <span class="text-danger">*</span></label>
-                <input class="form-control" type="password" name="pass" value="<?=set_value('pass')?>"/>
+                <label>Tanggal <span class="text-danger">*</span></label>
+                <input class="form-control" type="date" name="tgl" value="<?=set_value('tgl')?>"/>
             </div>
             <div class="form-group">
-                <label>Level <span class="text-danger">*</span></label>
+                <label>Barang <span class="text-danger">*</span></label>
                 <select class="form-control" name="level">
                     <?=get_level_option(set_value('level'))?>
                 </select>

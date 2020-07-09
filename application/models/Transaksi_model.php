@@ -6,10 +6,16 @@ class Transaksi_model extends CI_Model
 
     public function tampil($search = '')
     {
-        return $this->db->query("SELECT * FROM tb_transaksi WHERE id LIKE '%" . $search . "%' ORDER BY id")->result();
+        $this->db->select('*');
+        $this->db->from('tb_transaksi');
+        $this->db->join('tb_atribut', 'tb_transaksi.barang = tb_atribut.id_atribut');
+        if ($search) {
+            $this->db->like('nama', $search);
+        }
+        return $this->db->get()->result();
     }
 
-    public function get_user($ID = null)
+    public function get_transaksi($ID = null)
     {
         $query = $this->db->get_where($this->table, array($this->kode => $ID));
         return $query->row();
@@ -43,5 +49,10 @@ class Transaksi_model extends CI_Model
     public function update($data, $user)
     {
         $this->db->update('tb_transaksi', $data, array('user' => $user));
+    }
+
+    public function getAtributData()
+    {
+        return $this->db->get('tb_atribut')->result();
     }
 }

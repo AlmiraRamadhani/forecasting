@@ -3,26 +3,32 @@
         <?=print_error()?>
         <form method="post">
             <div class="form-group">
-                <input type="hidden" name="id" value="<?= $row->id; ?>">
+                <input type="hidden" name="id" value="<?= $row['id_transaksi']; ?>">
+                <input type="hidden" name="status" value="<?= $row['status']; ?>">
                 <label>Username <span class="text-danger">*</span></label>
-                <input class="form-control" type="text" name="nama" value="<?=set_value('nama', $row->nama)?>" />
+                <input class="form-control" type="text" name="nama" value="<?=set_value('nama', $row['nama'])?>" />
             </div>
             <div class="form-group">
                 <label>Tanggal <span class="text-danger">*</span></label>
-                <input class="form-control" type="text" name="tanggal" value="<?=set_value('date', $row->tanggal)?>"
+                <input class="form-control" type="text" name="tanggal" value="<?=set_value('date', $row['tanggal'])?>"
                     readonly />
             </div>
             <div class="form-group">
                 <label>Barang <span class="text-danger">*</span></label>
                 <select class="form-control" name="atribut">
                     <?php foreach($atribut as $a) : ?>
-                    <?php if($a->id_atribut == $row->barang) : ?>
+                    <?php if($a->id_atribut == $row['barang']) : ?>
                     <option value="<?= $a->id_atribut; ?>" selected><?= $a->nama_atribut; ?></option>
                     <?php else : ?>
                     <option value="<?= $a->id_atribut; ?>"><?= $a->nama_atribut; ?></option>
                     <?php endif; ?>
                     <?php endforeach; ?>
                 </select>
+            </div>
+            <div class="form-group">
+                <label>Jumlah <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" name="jumlah"
+                    value="<?=set_value('jumlah', $row['jumlah'])?>" />
             </div>
             <div class="form-group">
                 <button class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Simpan</button>

@@ -8,7 +8,13 @@
             </div>
             <div class="form-group">
                 <label>Tanggal <span class="text-danger">*</span></label>
-                <input class="form-control" type="date" name="tanggal" value="<?=set_value('tanggal')?>" />
+                <?php 
+                    $bulan = date('m');
+                    $hari = date('d');
+                    $tahun = date('Y');
+                    $tanggal = $tahun . '-' . $bulan . '-' . $hari;
+                ?>
+                <input class="form-control" type="date" name="tanggal" value="<?= $tanggal;  ?>" readonly />
             </div>
             <div class="form-group">
                 <label>Barang <span class="text-danger">*</span></label>
@@ -17,6 +23,10 @@
                     <option value="<?= $a->id_atribut; ?>"><?= $a->nama_atribut; ?></option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+            <div class="form-group">
+                <label>Jumlah <span class="text-danger">*</span></label>
+                <input type="number" name="jumlah" class="form-control" value="<?= set_value('jumlah'); ?>">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Simpan</button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2020 at 05:42 AM
+-- Generation Time: Jul 10, 2020 at 02:29 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -31,18 +31,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `tb_atribut` (
   `id_atribut` int(11) NOT NULL,
   `kode_atribut` varchar(16) NOT NULL,
-  `nama_atribut` varchar(255) NOT NULL
+  `nama_atribut` varchar(255) NOT NULL,
+  `harga_atribut` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_atribut`
 --
 
-INSERT INTO `tb_atribut` (`id_atribut`, `kode_atribut`, `nama_atribut`) VALUES
-(1, 'A01', 'Vitamin'),
-(2, 'A02', 'Antibiotik'),
-(3, 'A03', 'Desinfektan'),
-(4, 'A04', 'Feed Active');
+INSERT INTO `tb_atribut` (`id_atribut`, `kode_atribut`, `nama_atribut`, `harga_atribut`) VALUES
+(1, 'A01', 'Vitamin', 10000),
+(2, 'A02', 'Antibiotik', 10000),
+(3, 'A03', 'Desinfektan', 10000),
+(4, 'A04', 'Feed Active', 10000);
 
 -- --------------------------------------------------------
 
@@ -255,6 +256,27 @@ INSERT INTO `tb_dataset` (`id_dataset`, `nomor`, `tanggal`, `id_atribut`, `nilai
 (190, 48, '2019-12-01', 'A02', 262),
 (191, 48, '2019-12-01', 'A03', 267),
 (192, 48, '2019-12-01', 'A04', 218);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_detail_transaksi`
+--
+
+CREATE TABLE `tb_detail_transaksi` (
+  `id` int(11) NOT NULL,
+  `id_transaksi` int(11) NOT NULL,
+  `barang` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_detail_transaksi`
+--
+
+INSERT INTO `tb_detail_transaksi` (`id`, `id_transaksi`, `barang`, `jumlah`) VALUES
+(2, 6, 4, 2),
+(5, 7, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -639,15 +661,16 @@ CREATE TABLE `tb_transaksi` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `tanggal` date NOT NULL,
-  `barang` int(11) NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_transaksi`
 --
 
-INSERT INTO `tb_transaksi` (`id`, `nama`, `tanggal`, `barang`) VALUES
-(3, 'Joshua Davian Kristanto', '2020-07-09', 3);
+INSERT INTO `tb_transaksi` (`id`, `nama`, `tanggal`, `status`) VALUES
+(6, 'Yohana Bernike', '2020-07-10', 1),
+(7, 'Joshua Davian Kristanto', '2020-07-10', 0);
 
 -- --------------------------------------------------------
 
@@ -685,6 +708,12 @@ ALTER TABLE `tb_atribut`
 --
 ALTER TABLE `tb_dataset`
   ADD PRIMARY KEY (`id_dataset`);
+
+--
+-- Indexes for table `tb_detail_transaksi`
+--
+ALTER TABLE `tb_detail_transaksi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tb_grafik`
@@ -727,6 +756,12 @@ ALTER TABLE `tb_dataset`
   MODIFY `id_dataset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
+-- AUTO_INCREMENT for table `tb_detail_transaksi`
+--
+ALTER TABLE `tb_detail_transaksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tb_grafik`
 --
 ALTER TABLE `tb_grafik`
@@ -742,7 +777,7 @@ ALTER TABLE `tb_rel_alternatif`
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_user`

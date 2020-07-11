@@ -11,6 +11,10 @@
                 <input class="form-control" type="text" name="nama_atribut" value="<?= set_value('nama_atribut') ?>" />
             </div>
             <div class="form-group">
+                <label>Harga atribut <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" name="harga_atribut" value="<?= set_value('harga_atribut') ?>" />
+            </div>
+            <div class="form-group">
                 <button class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Simpan</button>
                 <a class="btn btn-danger" href="<?= site_url('atribut') ?>"><span class="glyphicon glyphicon-arrow-left"></span> Kembali</a>
             </div>

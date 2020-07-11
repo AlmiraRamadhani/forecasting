@@ -18,6 +18,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nama atribut</th>
+                    <th>Harga</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                 <tr>
                     <td><?= $row->id_atribut ?></td>
                     <td><?= $row->nama_atribut ?></td>
+                    <td><?= $row->harga_atribut ?></td>
                     <td>
                         <a class="btn btn-xs btn-warning" href="<?= site_url("atribut/ubah/$row->id_atribut") ?>"><span class="glyphicon glyphicon-edit"></span></a>
                         <a class="btn btn-xs btn-danger" href="<?= site_url("atribut/hapus/$row->id_atribut") ?>" onclick="return confirm('Hapus data?')"><span class="glyphicon glyphicon-trash"></span></a>
